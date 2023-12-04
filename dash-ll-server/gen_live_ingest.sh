@@ -14,6 +14,9 @@ then
     echo "Usage: $0 <SERVER> <PORT> [<FFMPEG>]"
     exit
 else
+    python3 new_steg_encoder.py
+    cp -r media/live1/* media/live/
+
     if [ "$FF" == "" ]
     then
         FF=ffmpeg
@@ -53,10 +56,16 @@ else
     echo "Using normal ffmpeg profile (360p@200K, 480p@600K, 720p@1000K)"
 fi
 
-${FF} -hide_banner -loglevel panic \
+
+
+
+${FF} -hide_banner \
 -re -i bbb.mp4 \
+-i "watermark.png" \
+-filter_complex "[0:v][1:v]overlay=24:810,format=yuv420p,split=2[out0][out1]" \
 -c:v ${VCODEC} \
-${LADDER_PROFILE} \
+-map "[out0]" -s:v:0 640x360 -b:v:0 100K -bufsize 200K \
+-map "[out1]" -s:v:1 852x480 -b:v:1 300K -bufsize 200K \
 -use_timeline 0 \
 -use_template 1 \
 -frag_type every_frame \
@@ -65,8 +74,19 @@ ${LADDER_PROFILE} \
 -f dash \
 ${HTTP_OPTS} \
 ${PROTO}://${SERVER}:${PORT}/${ID}/${ID}.mpd \
-${TS_OUT_CMD}
-
+${TS_OUT_CMD} 
 
 # -frag_type every_frame \
 # -frag_type duration \
+
+while true
+do
+    # Check for new chunks in the live folder
+    for chunk_file in media/live/*.m4s
+    do
+        python3 decode_new_steg.py
+    done
+
+    # Introduce a delay to avoid high CPU usage
+    sleep 1
+done
