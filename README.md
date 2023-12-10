@@ -1,16 +1,9 @@
-# NOTE
-LoL+ is integrated with [dash.js referance player v.3.2.0](https://github.com/Dash-Industry-Forum/dash.js) and due to the code base difference, there can be some differences in terms of performance. Under investigation. 
+# Watermarking Adaptive Video Streams By Manipulating m4s Segments
+This project is made on top of LoL + (LoL+ based on Twitch's ACM MMSys 2020 Grand Challenge; support build and test low-latency ABR algorithms locally integrate with  [dash.js referance player v.3.2.0](https://github.com/Dash-Industry-Forum/dash.js))
+thanks to our professor(Dr. Abdelhak Bentaleb) who is a co author of LoL+ to allow us to use their work as a base.
 
-All the ABR rules in this repository would be using our LoL+ bandwidth measurement module. If you wish to test with the default dash.js bandwidth measurement module, please use the original dash.js file provided in the official dash.js repository.
-
-# Assets for LoL+
-
-This repo contains assets for LoL+ based on Twitch's ACM MMSys 2020 Grand Challenge, [Adaptation Algorithm for Near-Second Latency](https://2020.acmmmsys.org/lll_challenge.php). It contains everything you need to build and test low-latency ABR algorithms locally.
-
-# Cite These Papers
-- Bentaleb, A.,  Akcay, M. N., Lim, M., Begen, A. C., & Zimmermann, R. Catching the Moment with LoL+ in Twitch-Like Low-Latency Live Streaming Platforms (to appear in IEEE Trans. Multimedia - [pdf](http://dx.doi.org/10.1109/TMM.2021.3079288)).
-- Lim, M., Akcay, M. N., Bentaleb, A., Begen, A. C., & Zimmermann, R. (2020, May). When they go high, we go low: low-latency live streaming in dash. js with LoL. In Proceedings of the 11th ACM Multimedia Systems Conference (pp. 321-326).
-
+# Abstract
+Intellectual property integrity is constantly in danger due to digital piracy; hence, creative countermeasures are essential. Conventional watermarking approaches are frequently insufficient against skilled pirates who employ sophisticated techniques. This research introduces a groundbreaking technique to embed binary watermarks in the form of messages during the live ingestion of video streams from servers. This research presents a system developed to encode live binary watermarks seamlessly into .m4s chunks, enhancing the security of digital content without compromising quality. The accompanying decoder, which can be implemented on the player side, facilitates the retrieval of the embedded message during playback. This multifaceted methodology not only bolsters content protection against the prevalent issue of piracy but also establishes superior resilience against removal or distortion techniques. By embedding binary watermarks dynamically during live ingestion, our approach introduces a layer of adaptability that contributes to the robustness of the protection mechanism. This comprehensive approach aims to fortify content protection in the face of rampant piracy, providing superior resilience against removal or distortion techniques. The effectiveness of this watermarking technique is rigorously benchmarked against existing methods across diverse scenarios, indicating its potential as the groundwork for future innovations in this field.
 
 # What's in the Box
 
@@ -23,17 +16,27 @@ This repo contains assets for LoL+ based on Twitch's ACM MMSys 2020 Grand Challe
 
 # Requirements
 - MacOS
-    - If you're using another operating system, don't worry. You'll just have to build ffmpeg from source, and change a few variables. See that README in dash-ll-server/ for instructions.
+    - If you're using another operating system, don't worry. You'll just have to build ffmpeg from source, and add the binaries to the dash-ll-server folder.
+    - See that README in dash-ll-server/ for instructions.
 - python3
 - node.js v12+
 - Chrome (latest, v85 at the moment)
 
 
-# How to use
+# How to execute
 
 - Install each project locally by following their enclosed README
 - Start Dash.js by running `grunt dev` in the `dash.js` folder
 - In a separate terminal window, start the ingest server by running `bash run_server.sh` in the `dash-ll-server` folder
+- This implementation is only made supported for the network profile `PROFILE_FAST` to make it compatible for low specidfication devcies aswell
+- To start ingesting give command in dash-ll-server `bash run_gen.sh PROFILE_FAST`
+- encoder is already embedded to run_gen.sh which autoimatically activates when ingestion starts, Let it encode the whole stream once and embedd watermark message in all .m4s chunks
+- encoder file name : 
+
+### Decoder: 
+- 
+- Once the whole stream ingestion/encoding is done decoder is already implemented to the script and starts automnatically
+- 
 
 From here you have a few options:
 ### Executing test runs
