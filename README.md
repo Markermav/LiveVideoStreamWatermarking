@@ -41,4 +41,4 @@ Intellectual property integrity is constantly in danger due to digital piracy; h
 Kalinga Swain (Concordia University, Montreal) , Jonathan Lupague (Concordia University, Montreal)
 
 # Thanks to:
-Dr. Abdelhak Bentaleb for guidance and support.
+Dr. Abdelhak Bentaleb for guidance and support. [About](https://www.concordia.ca/faculty/abdelhak-bentaleb.html)
