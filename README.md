@@ -19,6 +19,7 @@ Intellectual property integrity is constantly in danger due to digital piracy; h
 - python3
 - node.js v12+
 - Chrome (latest, v85 at the moment)
+- Please download the sample video stream from here and rename it to bbb.mp4: [Link](https://mirror.clarkson.edu/blender/demo/movies/BBB/bbb_sunflower_1080p_30fps_normal.mp4)
 
 
 # How to execute & Encode chunks
