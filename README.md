@@ -1,4 +1,5 @@
 # Watermarking Adaptive Video Streams By Manipulating m4s Segments
+Paper Link: [Check here!](https://github.com/Markermav/LiveVideoStreamWatermarking/blob/master/Invisible_Watermark_for_Live_Streaming.pdf)
 Note: This project is made on top of [LoL+](https://github.com/NUStreaming/LoL-plus)  (LoL+ is based on Twitch's ACM MMSys 2020 Grand Challenge; support build and test low-latency ABR algorithms locally integrate with  [dash.js referance player v.3.2.0](https://github.com/Dash-Industry-Forum/dash.js))
 thanks to our professor(Dr. Abdelhak Bentaleb) who is a co author of LoL+ to allow us to use their work as a base.
 
